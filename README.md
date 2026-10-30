@@ -15,7 +15,14 @@ El bloque 3 contempla implementar la base de datos y un programa sencillo para c
 2. Consultar las obligaciones y sus saldos pendientes.
 3. Registrar un pago y comprobar la actualización del saldo.
 
-Las tecnologías y las instrucciones de ejecución se definirán en la guía de implementación.
+Las instrucciones de configuración y ejecución se documentarán en la guía de implementación.
+
+## Tecnologías acordadas
+
+- **Backend:** Python y Django REST Framework (DRF).
+- **Frontend:** React, Vite y TypeScript.
+- **Base de datos:** PostgreSQL.
+- **Estilos:** Tailwind CSS.
 
 ## Organización
 
@@ -28,13 +35,13 @@ README.md
 
 | Integrante | Responsabilidad |
 |---|---|
-| CAMARGO HILACHOQUE, ROMINA GIULIANA | Analista de Odoo e investigadora; preparación de scripts de base de datos para esta implementación. |
-| GUILLEN VALCARCEL, DANIEL JOSUE | Arquitectura y guía de implementación. |
+| CAMARGO HILACHOQUE, ROMINA GIULIANA | Analista de Odoo, investigadora tecnológica y DevOps; preparación de entornos de desarrollo y pruebas, automatización de la ejecución y el despliegue. |
+| GUILLEN VALCARCEL, DANIEL JOSUE | Arquitecto de software; estructura técnica, comunicación entre componentes, integración y guía de implementación con las tecnologías acordadas. |
 | HATCHES CURO, JOSÉ LEÓN ENRIQUE | Scrum Master, repositorio y seguimiento del trabajo. |
-| LUQUE GUEVARA, FERNANDO GERSON | Backend y revisión técnica de la base de datos. |
-| MENGOA VALERIANO, BRIGITTE NOELIA | Investigación y apoyo con IA. |
+| LUQUE GUEVARA, FERNANDO GERSON | Backend, diccionario de datos y diagrama ER; implementación de modelos, migraciones, validaciones y servicios mediante APIs. |
+| MENGOA VALERIANO, BRIGITTE NOELIA | Investigación y apoyo con IA y patrones de diseño; análisis de alternativas y documentación de patrones con ejemplos para orientar su aplicación en el código. |
 | MOROCCO SAICO, JOSÉ MANUEL | Frontend y bocetos. |
-| SOLSOL CHOQUE, FERNANDO RAFAEL | Product Owner, historias de usuario y aceptación funcional. |
+| SOLSOL CHOQUE, FERNANDO RAFAEL | Product Owner, historias de usuario, criterios de aceptación y aceptación funcional. |
 | VELAZQUE QUISPE, FLOR DE LIZ | QA, pruebas y verificación de correcciones. |
 
 ## Historias de usuario y tareas
@@ -45,7 +52,7 @@ Las historias de usuario se registran como issues con la etiqueta `historia-usua
 - **HU-02:** Consultar obligaciones y saldos pendientes.
 - **HU-03:** Registrar un pago y actualizar el saldo.
 
-Las actividades de arquitectura, scripts, Backend, Frontend y pruebas se registran como issues con la etiqueta `tarea-tecnica` y se relacionan con las historias correspondientes.
+Las actividades de arquitectura, modelado de datos, DevOps, patrones de diseño, Backend, Frontend y pruebas se registran como issues con la etiqueta `tarea-tecnica` y se relacionan con las historias correspondientes. Cada tarea tiene un responsable principal y un revisor.
 
 El tablero de GitHub Projects organiza los issues en: **Pendiente → En proceso → En revisión → Terminado**.
 
@@ -67,6 +74,8 @@ Las tareas técnicas se cierran al completar y revisar su entrega. Las historias
 |---|---|
 | Preparación del repositorio | `chore/estructura-inicial` |
 | Arquitectura y guía | `docs/arquitectura` |
+| Patrones de diseño y apoyo con IA | `docs/patrones-diseno` |
+| DevOps y entornos | `chore/devops` |
 | Base de datos | `feat/base-datos` |
 | Backend | `feat/backend` |
 | Frontend | `feat/frontend` |
