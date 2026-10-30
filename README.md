@@ -7,15 +7,16 @@ Este repositorio reúne el trabajo del módulo de Cuentas por Pagar, pertenecien
 
 El objetivo del módulo de Cuentas por Pagar es gestionar y controlar las deudas que la empresa mantiene con sus proveedores, desde que se registra el comprobante de compra hasta que se realiza el pago. Para ello, el módulo debe identificar correctamente al proveedor, el tipo de comprobante, la moneda, el banco, el medio de pago y la clasificación de la operación, además de relacionar la deuda con las cuentas contables correspondientes.
 
-## Primera implementación
+## Primer incremento
 
-El bloque 3 contempla implementar la base de datos y un programa sencillo para comprobar el siguiente recorrido:
+El primer CRUD permite registrar, consultar, modificar y anular obligaciones con proveedores. Rafael define los campos, reglas y restricciones en T-02. El registro de pagos se abordará en un incremento posterior.
 
-1. Registrar el comprobante y la obligación de un proveedor.
-2. Consultar las obligaciones y sus saldos pendientes.
-3. Registrar un pago y comprobar la actualización del saldo.
+- [HU-01 y sus tareas](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/1).
+- [Tablero: Cuentas por Pagar — Primer CRUD](https://github.com/users/LeonHatches/projects/1).
+- [Planificación, responsables y diagrama del flujo](docs/planificacion/primer-crud.md).
+- [Guía de colaboración](CONTRIBUTING.md).
 
-Las instrucciones de configuración y ejecución se documentarán en la guía de implementación.
+Las instrucciones de configuración y ejecución del programa se documentarán en la guía de implementación.
 
 ## Tecnologías acordadas
 
@@ -24,12 +25,23 @@ Las instrucciones de configuración y ejecución se documentarán en la guía de
 - **Base de datos:** PostgreSQL.
 - **Estilos:** Tailwind CSS.
 
-## Organización
+## Organización del repositorio
 
 ```text
 README.md
-
+CONTRIBUTING.md
+.github/
+  ISSUE_TEMPLATE/
+    historia_usuario.md
+    tarea.md
+    error.md
+  pull_request_template.md
+docs/
+  planificacion/
+    primer-crud.md
 ```
+
+Daniel define la estructura técnica del programa en [T-03](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/4). Los documentos de seguimiento y entrega se incorporan conforme haya acuerdos y resultados que registrar.
 
 ## Equipo
 
@@ -46,49 +58,17 @@ README.md
 
 ## Historias de usuario y tareas
 
-Las historias de usuario se registran como issues con la etiqueta `historia-usuario`:
+El primer incremento se organiza mediante **HU-01: gestionar las obligaciones de Cuentas por Pagar**, desglosada en **T-01 a T-26**. La historia enlaza todas las tareas; sus títulos indican el rol y sus descripciones identifican al responsable y el entregable.
 
-- **HU-01:** Registrar una obligación.
-- **HU-02:** Consultar obligaciones y saldos pendientes.
-- **HU-03:** Registrar un pago y actualizar el saldo.
+El Project mantiene los estados: **Pendiente, En proceso, Bloqueado, En revisión y Terminado**. La tabla de planificación describe el trabajo y sus dependencias; no duplica los estados del tablero.
 
-Las actividades de arquitectura, modelado de datos, DevOps, patrones de diseño, Backend, Frontend y pruebas se registran como issues con la etiqueta `tarea-tecnica` y se relacionan con las historias correspondientes. Cada tarea tiene un responsable principal y un revisor.
+## Cómo participar
 
-El tablero de GitHub Projects organiza los issues en: **Pendiente → En proceso → En revisión → Terminado**.
+1. Revisar el issue asignado y sus dependencias.
+2. Crear la rama de la tarea desde `main` actualizado.
+3. Realizar cambios y commits concretos con la cuenta del integrante.
+4. Abrir un pull request, enlazar el issue y registrar las comprobaciones.
+5. Solicitar revisión y atender observaciones.
+6. Integrar la entrega revisada y actualizar el tablero.
 
-## Flujo de colaboración
-
-1. Seleccionar un issue y confirmar quién lo realizará y quién lo revisará.
-2. Crear la rama de trabajo desde la versión actualizada de `main`.
-3. Registrar cambios concretos mediante commits descriptivos.
-4. Abrir un Pull Request hacia `main`, indicando el issue relacionado, los cambios y cómo se comprobaron.
-5. Mover la tarea a **En revisión** y avisar al revisor con el enlace del Pull Request.
-6. Atender las observaciones en la misma rama y agregar los commits de corrección.
-7. Incorporar los cambios revisados a `main` y actualizar el estado de la tarea.
-
-Las tareas técnicas se cierran al completar y revisar su entrega. Las historias de usuario se cierran cuando sus criterios de aceptación estén comprobados y el Product Owner acepte el resultado.
-
-## Ramas
-
-| Actividad | Rama sugerida |
-|---|---|
-| Preparación del repositorio | `chore/estructura-inicial` |
-| Arquitectura y guía | `docs/arquitectura` |
-| Patrones de diseño y apoyo con IA | `docs/patrones-diseno` |
-| DevOps y entornos | `chore/devops` |
-| Base de datos | `feat/base-datos` |
-| Backend | `feat/backend` |
-| Frontend | `feat/frontend` |
-| Pruebas | `test/flujo-principal` |
-
-## Commits
-
-Cada commit describe un cambio concreto. Ejemplos:
-
-```text
-docs: definir el flujo del programa
-feat: crear las tablas de obligaciones y pagos
-feat: conectar la interfaz con los servicios
-test: comprobar la actualización del saldo
-fix: impedir pagos superiores al saldo pendiente
-```
+La [guía de colaboración](CONTRIBUTING.md) incluye ejemplos de ramas, commits y avisos de revisión. La HU se cierra después de las pruebas y la aceptación funcional del Product Owner.
