@@ -99,3 +99,17 @@ Cada issue indica el revisor concreto al iniciar la tarea. El Product Owner vali
 Los estados se mantienen en el Project, sin duplicarlos en la tabla de planificación. Revisar las automatizaciones del tablero para que no den por terminada una tarea antes de cumplir sus condiciones de cierre.
 
 Una tarea se cierra cuando su entregable y comprobación están completos. Si incluye cambios en archivos, el PR debe estar integrado. HU-01 se cierra después de las pruebas de Flor, la aceptación de Rafael y la documentación de la entrega. Las tareas continuas de seguimiento concluyen al cerrar el incremento.
+
+## 7. Trabajo en paralelo
+
+Backend y Frontend coordinan el contrato de API antes de finalizar la implementación. Frontend puede usar datos de prueba mientras espera servicios. QA prepara casos desde los criterios y ejecuta pruebas conforme hay funciones disponibles. DevOps configura entornos desde el inicio e incorpora verificaciones según existe código ejecutable.
+
+Romina organiza por separado sus actividades de Odoo y DevOps. Brigitte Noelia investiga alternativas y patrones con apoyo de IA, contrasta resultados y aporta ejemplos revisables. El uso de IA no sustituye la comprensión, comprobación y responsabilidad del integrante sobre su entrega.
+
+Los defectos se registran cuando se detectan, con pasos reproducibles. El responsable técnico corrige y QA vuelve a comprobar. Un cambio de alcance se consulta con Rafael antes de incorporarlo.
+
+## Referencias
+
+- [Flujo de colaboración de GitHub](https://docs.github.com/en/get-started/using-github/github-flow).
+- [Vincular un PR con un issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue).
+- [Plantillas de issues y PR](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/about-issue-and-pull-request-templates).
