@@ -52,3 +52,50 @@ git push -u origin docs/t-23-colaboracion
 ```
 
 Cada integrante utiliza su propia cuenta y registra sus aportes reales. Crear issues, mover tarjetas o aprobar una revisión deja actividad en GitHub, pero no genera commits. La cantidad de commits no reemplaza la evidencia del trabajo realizado.
+
+## 4. Abrir un pull request
+
+Abrir un PR de la rama de trabajo hacia `main`. Completar la plantilla con el problema o tarea, los cambios, la forma de comprobación y el revisor. Un PR reúne normalmente una tarea.
+
+- Usar `Relacionado con #24` si la entrega es parcial o falta una revisión para cerrar el issue.
+- Usar `Closes #24` únicamente cuando el PR complete T-23 y su revisión permita cerrarla al integrar en `main`.
+- No utilizar `Closes #1` en un PR técnico individual: HU-01 requiere pruebas completas y validación funcional de Rafael.
+
+Si la tarea solo produce una revisión en GitHub, enlazar ese registro desde el issue. Cuando exista un documento de revisión o resultados, versionarlo como parte del entregable correspondiente.
+
+## 5. Solicitar y atender la revisión
+
+Mover la tarea a **En revisión** cuando el entregable esté disponible. Avisar dentro del issue o PR con este formato:
+
+```text
+Entregable: [enlace al PR o documento]
+Realizado: [cambios concretos]
+Comprobación: [pasos y resultados]
+Revisión solicitada a: [integrante o usuario]
+Pendientes: [si existen]
+```
+
+| Aspecto | Revisión |
+|---|---|
+| Alcance, criterios y funcionamiento esperado | Rafael — Product Owner. |
+| Estructura técnica, integración y patrones | Daniel — Arquitectura. |
+| Contrato de API y comunicación entre pantallas y servicios | Fernando Gerson y José Manuel. |
+| Entornos y automatización | Romina — DevOps, con quien utiliza el entorno. |
+| Casos, resultados y correcciones | Flor — QA; Rafael valida los criterios funcionales. |
+| Documentación de colaboración y seguimiento | Integrante disponible designado en el issue; Hatches atiende observaciones. |
+
+Cada issue indica el revisor concreto al iniciar la tarea. El Product Owner valida el producto; las revisiones técnicas corresponden al rol pertinente. Atender observaciones en la misma rama, agregar los commits necesarios y solicitar otra revisión cuando corresponda.
+
+## 6. Estados y cierre
+
+| Estado | Cuándo utilizarlo |
+|---|---|
+| Pendiente / Todo | Aún no se inicia el trabajo. |
+| En proceso / In progress | El responsable trabaja en el entregable. |
+| Bloqueado | Existe un impedimento: registrar causa, dependencia y siguiente acción. |
+| En revisión | El entregable está listo y se solicitó revisión. |
+| Terminado / Done | La entrega está revisada y su evidencia está enlazada. |
+
+Los estados se mantienen en el Project, sin duplicarlos en la tabla de planificación. Revisar las automatizaciones del tablero para que no den por terminada una tarea antes de cumplir sus condiciones de cierre.
+
+Una tarea se cierra cuando su entregable y comprobación están completos. Si incluye cambios en archivos, el PR debe estar integrado. HU-01 se cierra después de las pruebas de Flor, la aceptación de Rafael y la documentación de la entrega. Las tareas continuas de seguimiento concluyen al cerrar el incremento.
