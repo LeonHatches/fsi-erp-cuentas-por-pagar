@@ -65,3 +65,61 @@ Los números identifican tareas, no una secuencia obligatoria. Las dependencias 
 | [T-26](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/27) | Documentar la entrega del primer CRUD | José León Enrique Hatches Curo — Scrum Master | [T-21](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/22), [T-22](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/23) |
 
 T-15 comienza con el proyecto base y amplía las verificaciones cuando están disponibles el frontend y las pruebas. T-25 acompaña todo el desarrollo. Backend puede revisar datos y configurar el proyecto mientras Brigitte investiga patrones; los aplica después de la revisión técnica correspondiente.
+
+## Flujo de trabajo
+
+Las flechas muestran el recorrido principal. Las coordinaciones entre ramas se detallan después del diagrama para evitar cruces innecesarios.
+
+```mermaid
+flowchart TB
+    inicio["Hatches · T-01, T-23 y T-24<br/>Planificación, guía y plantillas"]
+    alcance["Rafael · T-02<br/>Alcance y criterios de aceptación"]
+    inicio --> alcance --> paralelo["Trabajo en paralelo"]
+
+    subgraph tecnica["Arquitectura y Backend"]
+        arq["Daniel · T-03<br/>Guía y estructura técnica"]
+        datos["Fernando Gerson · T-04 y T-13<br/>Diccionario y contrato de API"]
+        patron["Brigitte Noelia · T-05<br/>Patrones y ejemplos; revisión de Daniel"]
+        backend["Fernando Gerson · T-11, T-12 y T-16<br/>Configuración, modelos, API y pruebas"]
+        arq --> datos --> backend
+        arq --> patron
+        patron -.-> backend
+    end
+
+    subgraph interfaz["Diseño y Frontend"]
+        referencias["Romina · T-06<br/>Referencias de Odoo"]
+        bocetos["José Manuel · T-09<br/>Wireframes y bocetos"]
+        revision["Rafael · T-10<br/>Revisión funcional de bocetos"]
+        frontend["José Manuel · T-14<br/>Pantallas con datos de prueba"]
+        referencias --> bocetos --> revision --> frontend
+    end
+
+    subgraph operaciones["Entornos y automatización"]
+        entorno["Romina · T-07<br/>Configuración de entornos"]
+        automatizacion["Romina · T-15<br/>Verificaciones automáticas progresivas"]
+        entorno --> automatizacion
+    end
+
+    subgraph calidad["Preparación de pruebas"]
+        casos["Flor · T-08<br/>Casos, datos y resultados esperados"]
+    end
+
+    paralelo --> arq
+    paralelo --> referencias
+    paralelo --> entorno
+    paralelo --> casos
+    backend --> union["Primera versión integrable"]
+    frontend --> union
+    automatizacion --> union
+    casos --> union
+    union --> integrar["José Manuel · T-17<br/>Conectar pantallas con API"]
+    integrar --> revisar["Daniel · T-18<br/>Revisar integración técnica"]
+    revisar --> preparar["Romina · T-19<br/>Versión compartida de pruebas"]
+    preparar --> probar["Flor · T-20<br/>Ejecutar pruebas y registrar resultados"]
+    probar --> validar["Rafael · T-21<br/>Validar criterios de aceptación"]
+    validar --> conforme{"¿Pruebas y aceptación conformes?"}
+    conforme -->|No| corregir["Registrar defecto o cambio<br/>Corregir, comprobar y revalidar"]
+    corregir --> conforme
+    conforme -->|Sí| cerrar["Hatches · T-22 y T-26<br/>Trazabilidad y documentación de entrega"]
+    cerrar --> fin(["HU-01 completada"])
+```
