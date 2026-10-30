@@ -123,3 +123,35 @@ flowchart TB
     conforme -->|Sí| cerrar["Hatches · T-22 y T-26<br/>Trazabilidad y documentación de entrega"]
     cerrar --> fin(["HU-01 completada"])
 ```
+
+### Coordinaciones entre ramas
+
+- Los bocetos utilizan el diccionario de T-04 y las referencias de T-06; Frontend usa el contrato de T-13 para preparar datos de prueba y conectar servicios.
+- Arquitectura y DevOps acuerdan la configuración inicial; Backend y Frontend la utilizan y verifican.
+- Romina distribuye su disponibilidad entre Odoo y DevOps; las ramas representan responsabilidades, no personas distintas.
+- QA inicia los casos con los criterios de Rafael y prueba funciones parciales conforme están disponibles.
+- Hatches registra dependencias, impedimentos y acuerdos reales en T-25 durante todo el flujo.
+- Las correcciones se crean al detectar defectos. No se han definido issues de errores ficticios.
+
+## Entregables de organización
+
+| Tarea | Entregable |
+|---|---|
+| T-01 | Esta planificación y sus enlaces al tablero y los issues. |
+| T-23 | `CONTRIBUTING.md`: ramas, commits, revisiones y estados. |
+| T-24 | Plantillas de historia, tarea, error y pull request en `.github/`. |
+| T-25 | Registro de seguimiento con hechos y acuerdos cuando se produzcan. |
+| T-22 | Revisión de trazabilidad al completar el incremento. |
+| T-26 | Documento de entrega con versión validada, evidencias y pendientes. |
+
+El registro de seguimiento y el documento de entrega se incorporan cuando exista contenido real. La creación de issues no significa que las tareas estén terminadas.
+
+## Condiciones de entrega
+
+- Criterios definidos por Rafael y comprobados en la versión integrada.
+- Resultados de QA vinculados a los casos y a la versión probada.
+- Defectos que impidan cumplir los criterios resueltos y verificados.
+- Revisión técnica y aceptación funcional registradas.
+- Instrucciones de ejecución, evidencia y pendientes documentados.
+
+Las fechas de entrega y estimaciones se coordinarán con el equipo. Esta planificación no fija compromisos personales ni da por realizadas investigaciones o implementaciones.
