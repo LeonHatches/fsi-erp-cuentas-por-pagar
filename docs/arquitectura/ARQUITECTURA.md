@@ -34,17 +34,19 @@ El registro de pagos se aborda en un incremento posterior; las tecnologías se e
 
 ### Acceso a la base de datos
 
-La estructura se escribe una sola vez, en los modelos de Django, incluidas las restricciones UNIQUE, CHECK y FOREIGN KEY mediante `Meta.constraints`; Django las crea en PostgreSQL. Así la base aplica las reglas aunque falle el código.
+La estructura se define en los modelos de Django. Las relaciones se declaran con campos `models.ForeignKey`; las restricciones de unicidad y comprobación pueden declararse con `models.UniqueConstraint` y `models.CheckConstraint` en `Meta.constraints`. Las migraciones crean estas relaciones y restricciones en PostgreSQL.
 
-- `01_estructura.sql` se obtiene con `sqlmigrate`, sirve para revisar y documentar las tablas y **no se edita a mano**: cualquier cambio se hace en los modelos y el script se vuelve a generar.
-- `02_datos_prueba.sql` se escribe aparte, porque contiene registros de ejemplo y no tablas.
+- `python manage.py makemigrations` genera las migraciones a partir de los cambios en los modelos.
+- `python manage.py migrate` aplica las migraciones pendientes y registra su ejecución en la base de datos.
+- `python manage.py sqlmigrate <app> <migracion>` muestra el SQL de una migración específica; no lo ejecuta ni genera automáticamente un esquema completo del proyecto. `database/01_estructura.sql` conserva ese SQL como referencia documental, con la aplicación y migración de origen identificadas. Su contenido se obtiene de las migraciones y no se modifica a mano. La creación y actualización de la base se realiza con `migrate`, no ejecutando esta referencia SQL.
+- `02_datos_prueba.sql` contiene registros de ejemplo y no modifica la estructura. Su carga se realiza sobre una base de pruebas con las migraciones aplicadas.
 
 ### Herramientas complementarias
 
 | Herramienta | Uso |
 |---|---|
 | Git y GitHub | Control de versiones, ramas por actividad y revisión mediante pull requests. |
-| DBeaver o pgAdmin | Ejecutar los scripts SQL y revisar tablas y datos de prueba. |
+| DBeaver o pgAdmin | Revisar tablas y cargar datos de prueba sobre una base migrada; los cambios de estructura se aplican con Django. |
 | Panel de administración de Django | Consultar y cargar datos sin depender del frontend. |
 | Swagger UI (drf-spectacular) | Documentar y probar los servicios del backend. |
 | django-cors-headers | Permitir que React consuma la API desde otro puerto. |
@@ -91,13 +93,14 @@ Cada pago se aplicará dentro de una transacción (`transaction.atomic`): el bac
 
 ## 5. Integración con el ERP
 
-Al comunicarse por API REST con JSON, el módulo puede integrarse con otros módulos del ERP aunque usen otro lenguaje. Si el curso define una tecnología común para todo el ERP, esta decisión se revisará antes de iniciar la implementación.
+El ERP utiliza las tecnologías acordadas entre los módulos: Python con Django REST Framework para el backend, React con Vite y TypeScript para el frontend, PostgreSQL como base de datos y Tailwind CSS para los estilos. Cuentas por Pagar adopta este conjunto tecnológico y se integra mediante contratos de API REST con intercambio de JSON. La información compartida y las responsabilidades de cada módulo se coordinan con los equipos correspondientes.
 
 ## Referencias
 
 - [PostgreSQL](https://www.postgresql.org/docs/) · [MySQL](https://dev.mysql.com/doc/) · [SQLite: tipos de datos](https://www.sqlite.org/datatype3.html)
 - [Python: decimal](https://docs.python.org/3/library/decimal.html)
 - [Django: migraciones](https://docs.djangoproject.com/en/stable/topics/migrations/) · [Django: restricciones](https://docs.djangoproject.com/en/stable/ref/models/constraints/)
+- [Django: ForeignKey](https://docs.djangoproject.com/en/stable/ref/models/fields/#foreignkey) · [Django: sqlmigrate](https://docs.djangoproject.com/en/stable/ref/django-admin/#sqlmigrate)
 - [Django REST Framework](https://www.django-rest-framework.org/) · [drf-spectacular](https://drf-spectacular.readthedocs.io/)
 - [React](https://react.dev/) · [Vite](https://vite.dev/) · [TypeScript](https://www.typescriptlang.org/docs/) · [Tailwind CSS](https://tailwindcss.com/docs)
 - [Odoo: documentación para desarrolladores](https://www.odoo.com/documentation/)
