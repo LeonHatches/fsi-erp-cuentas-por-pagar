@@ -19,7 +19,7 @@ Esta guía explica cómo se organiza el programa del módulo de Cuentas por Paga
 |---|---|---|---|
 | [backend/](../../backend/README.md) | Proyecto Django y DRF: modelos, migraciones, API y pruebas. | Fernando Gerson (Backend) | [T-11](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/12), [T-12](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/13), [T-16](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/17) |
 | [frontend/](../../frontend/README.md) | Proyecto React, Vite y TypeScript con las pantallas del CRUD. | José Manuel (Frontend) | [T-14](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/15), [T-17](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/18) |
-| [database/](../../database/README.md) | Scripts SQL: estructura generada y datos de prueba. | Fernando Gerson (estructura) y Flor (datos) | [T-12](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/13), [T-08](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/9) |
+| [database/](../../database/README.md) | SQL de migraciones como referencia documental y datos de prueba. | Fernando Gerson (estructura) y Flor (datos) | [T-12](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/13), [T-08](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/9) |
 | [pruebas/](../../pruebas/README.md) | Casos y resultados de QA. | Flor (QA) | [T-08](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/9), [T-20](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/21) |
 | [docs/bocetos/](../bocetos/README.md) | Wireframes y bocetos de las pantallas. | José Manuel; revisa Rafael | [T-09](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/10), [T-10](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/11) |
 | `docs/arquitectura/` | Arquitectura y esta guía. | Daniel (Arquitectura) | [T-03](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/4) |
@@ -49,13 +49,13 @@ backend/
 
 | Elemento | Qué contiene y por qué está separado |
 |---|---|
-| `manage.py` | Punto de entrada de los comandos de Django (servidor, migraciones, `sqlmigrate`, pruebas). |
+| `manage.py` | Punto de entrada de los comandos de Django: `makemigrations` genera migraciones, `migrate` las aplica y `sqlmigrate` muestra su SQL. También permite ejecutar el servidor y otros comandos. |
 | `requirements.txt` | Dependencias de Python; permite instalar las mismas versiones en todas las máquinas. |
 | `.env.example` | Ejemplo de variables de entorno sin valores reales. Su contenido se define en [T-07](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/8); no se suben credenciales. |
 | `config/` | Configuración global: base de datos, aplicaciones instaladas, CORS, drf-spectacular y rutas raíz. |
 | `cuentas_por_pagar/` | App del módulo; agrupa todo lo propio de Cuentas por Pagar. |
-| `models.py` | Única definición de las tablas y de sus restricciones UNIQUE, CHECK y FK mediante `Meta.constraints`. |
-| `migrations/` | Historial versionado de cambios de estructura; de aquí sale el script SQL. |
+| `models.py` | Definición de tablas y relaciones mediante campos como `models.ForeignKey`; restricciones `UniqueConstraint` y `CheckConstraint` en `Meta.constraints`. |
+| `migrations/` | Historial versionado de cambios de estructura, generado con `makemigrations` y aplicado con `migrate`. |
 | `serializers.py` | Valida los datos que entran y define los que salen; produce los mensajes de error. |
 | `views.py` | Endpoints de la API; reciben la petición, usan serializers y modelos y responden JSON. |
 | `urls.py` | Rutas del módulo bajo el prefijo `/api/`. |
@@ -157,8 +157,8 @@ Consultar y modificar siguen el mismo recorrido. **Anular** no elimina el regist
 ## 7. Reglas de trabajo
 
 1. **Los modelos de Django son la única fuente de la estructura.** Las tablas, columnas y restricciones se definen una sola vez en `models.py`; no se crean ni modifican tablas a mano en PostgreSQL.
-2. **El script SQL se genera, no se escribe.** `database/01_estructura.sql` se obtiene con `sqlmigrate` a partir de las migraciones y no se edita a mano. Los datos de ejemplo van en `02_datos_prueba.sql`, que es un archivo aparte.
-3. **Los cambios de estructura se hacen mediante PR.** Se modifican los modelos, se genera la migración, se vuelve a generar el script y todo se revisa en un pull request, según la [guía de colaboración](../../CONTRIBUTING.md).
+2. **Las migraciones crean y actualizan la base de datos.** `python manage.py makemigrations` genera los cambios y `python manage.py migrate` los aplica. `sqlmigrate <app> <migracion>` muestra el SQL de una migración específica. `database/01_estructura.sql` es una referencia documental identificada por aplicación y migración; no representa automáticamente el esquema completo ni se ejecuta en sustitución de `migrate`. Los datos de ejemplo van en `02_datos_prueba.sql` y se cargan sobre una base de pruebas ya migrada.
+3. **Los cambios de estructura se hacen mediante PR.** El cambio incluye los modelos, las migraciones generadas y la actualización de la referencia SQL cuando corresponda. La comprobación incluye aplicar las migraciones con `migrate`. La revisión se registra en el pull request, conforme al [flujo de colaboración](../../CONTRIBUTING.md).
 4. **Las reglas se validan en dos niveles:** en el backend y en la base de datos.
 5. **Anular es un cambio de estado,** no un borrado. Las condiciones para anular o modificar una obligación se definen en [T-02](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/3).
 6. **No se suben credenciales, entornos virtuales ni dependencias descargadas.**
@@ -175,7 +175,7 @@ Consultar y modificar siguen el mismo recorrido. **Anular** no elimina el regist
 | Casos y datos de prueba | [T-08](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/9) | Flor (QA) |
 | Bocetos y su revisión | [T-09](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/10), [T-10](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/11) | José Manuel; Rafael |
 | Proyecto Django, DRF y PostgreSQL | [T-11](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/12) | Fernando Gerson |
-| Modelos, migraciones y script de estructura | [T-12](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/13) | Fernando Gerson |
+| Modelos, migraciones y referencia SQL | [T-12](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/13) | Fernando Gerson |
 | Contrato de API | [T-13](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/14) | Fernando Gerson, con Frontend |
 | Proyecto React y pantallas | [T-14](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/15) | José Manuel |
 | Verificaciones automáticas | [T-15](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/16) | Romina (DevOps) |
