@@ -27,4 +27,4 @@ backend/
     tests/
 ```
 
-El responsable de cada tarea puede ajustar los nombres al crear el proyecto, siempre que respete la separación de capas. La explicación de cada elemento está en la [guía de implementación](../docs/arquitectura/GUIA_IMPLEMENTACION.md#estructura-prevista-de-backend-y-frontend).
+El responsable de cada tarea puede ajustar los nombres al crear el proyecto, siempre que respete la separación de capas. La explicación de cada elemento está en la [guía de implementación](../docs/arquitectura/GUIA_IMPLEMENTACION.md#3-estructura-prevista-de-backend-y-frontend).
