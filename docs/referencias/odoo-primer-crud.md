@@ -174,70 +174,65 @@ La investigación técnica y funcional se basa en la documentación oficial de *
 
 ### 3.3 Referencias visuales de Odoo 17.0
 
-> [!WARNING]
-> **Estado de las capturas: Pendientes de incorporación física**  
-> Para asegurar la máxima integridad académica y cumplir las normas de revisión, **no se incorporan imágenes simuladas ni generadas por inteligencia artificial**. A continuación se delimitan los cuatro apartados específicos, sus rutas locales previstas en `docs/referencias/imagenes/`, sus descripciones funcionales y los enlaces oficiales de Odoo 17.0 para obtener las pantallas reales.  
-> Las capturas visuales constituyen el **único entregable pendiente** de esta investigación, el cual será completado una vez que se extraigan las pantallas del entorno o documentación gráfica oficial de Odoo 17.0.
+Se incorporan a continuación las capturas de pantalla reales correspondientes a Odoo 17.0, almacenadas en [`docs/referencias/imagenes/`](imagenes/), organizadas según las vistas funcionales de la gestión de facturas de proveedores:
 
 ```
 docs/referencias/
 ├── odoo-primer-crud.md
 └── imagenes/
-    ├── odoo17-listado-facturas.png       [CAPTURA PENDIENTE]
-    ├── odoo17-formulario-factura.png     [CAPTURA PENDIENTE]
-    ├── odoo17-detalle-estados-factura.png [CAPTURA PENDIENTE]
-    └── odoo17-cancelacion-reversion.png  [CAPTURA PENDIENTE]
+    ├── odoo17-listado-facturas.jpg
+    ├── odoo17-formulario.jpg
+    └── odoo17-detalle-factura.png
 ```
 
-#### 1. Captura 1: Listado de facturas de proveedores
+#### 1. Captura 1: Listado de facturas de proveedores (*Vendor Bills*)
 
-- **Estado:** `[CAPTURA PENDIENTE]`
-- **Ruta prevista:** `imagenes/odoo17-listado-facturas.png`
-- **Descripción requerida de la pantalla:** Debe mostrar la vista de lista (*List / Tree View*) del menú *Contabilidad / Facturación ‣ Proveedores ‣ Facturas* en Odoo 17.0. La captura debe evidenciar la disposición tabular de comprobantes, las columnas principales (Número interno, Proveedor, Fecha de Factura, Fecha de Vencimiento, Referencia externa, Total en moneda y Estado), así como los filtros de cabecera (*No pagadas*, *Vencidas*) y el botón de acción principal "Nuevo".
-- **Enlace oficial de referencia:**  
-  [Odoo 17.0 Documentation — Vendor Bills (List View)](https://www.odoo.com/documentation/17.0/applications/finance/accounting/vendor_bills.html)
-- **Registro de fuente y fecha de consulta:**
-  - *Fuente exacta de la captura:* `[Pendiente de registro tras captura]`
-  - *Fecha de consulta / obtención:* `[Pendiente de registro]`
+![Listado de facturas de proveedores en Odoo 17](imagenes/odoo17-listado-facturas.jpg)
+
+* **Título:** Listado de facturas de proveedores (*List / Tree View*) en el módulo de Contabilidad de Odoo 17.
+* **Versión:** Odoo 17.0 (Módulo *Accounting / Invoicing*).
+* **Funcionalidad observada:** Vista en formato de lista accesible desde *Contabilidad ‣ Proveedores ‣ Facturas*. Presenta la estructura tabular de las obligaciones comerciales con columnas para número de comprobante interno (`BILL/2023/...`), proveedor (`Azure Interior`), fecha de emisión, fecha de vencimiento (`In 40 days`, `Today`), referencia externa (`ref`), total adeudado y estado de pago. En la parte superior se observa el botón de acción principal **Nuevo** (*New*), así como la barra de búsqueda y filtros.
+* **Fuente original:** Cybrosys Technologies — [How to Configure Vendor Bills & Payments Management in Odoo 17 Accounting](https://www.cybrosys.com/blog/how-to-configure-vendor-bills-payments-management-in-odoo-17-accounting).
+* **Fecha de consulta:** 2 de noviembre de 2026.
 
 ---
 
 #### 2. Captura 2: Formulario de registro de una factura
 
-- **Estado:** `[CAPTURA PENDIENTE]`
-- **Ruta prevista:** `imagenes/odoo17-formulario-factura.png`
-- **Descripción requerida de la pantalla:** Debe mostrar la vista de formulario (*Form View*) para la creación de una factura de proveedor en Odoo 17.0 en estado borrador (*Draft*). Debe observarse la barra superior de acciones, la organización en dos columnas de la cabecera (Proveedor, Referencia de factura, Fecha de emisión, Fecha de vencimiento y Moneda), y el área inferior donde se detallan las líneas del documento y los totales.
-- **Enlace oficial de referencia:**  
-  [Odoo 17.0 Documentation — Vendor Bills (Bill Creation)](https://www.odoo.com/documentation/17.0/applications/finance/accounting/vendor_bills.html)
-- **Registro de fuente y fecha de consulta:**
-  - *Fuente exacta de la captura:* `[Pendiente de registro tras captura]`
-  - *Fecha de consulta / obtención:* `[Pendiente de registro]`
+![Formulario de registro de una factura en Odoo 17](imagenes/odoo17-formulario.jpg)
+
+* **Título:** Formulario de registro de factura de proveedor en estado borrador (*Draft*) en Odoo 17.
+* **Versión:** Odoo 17.0 (Módulo *Accounting / Invoicing*).
+* **Funcionalidad observada:** Vista de formulario (*Form View*) para la creación de una factura de proveedor. Muestra la barra superior de estado (*Statusbar*) en fase inicial `Draft` (con transición hacia `Posted`), los botones de confirmación y cancelación, y la organización de cabecera en dos columnas principales con los campos: Proveedor (*Vendor*), Referencia de factura (*Bill Reference*), Fecha de factura (*Bill Date*), Fecha contable (*Accounting Date*), Fecha de vencimiento (*Due Date*), Diario (*Journal*) y Moneda (*Currency*). Asimismo, se observa la pestaña inferior para el desglose de líneas de factura (*Invoice Lines*).
+* **Fuente original:** Cybrosys Technologies — [How to Configure Vendor Bills & Payments Management in Odoo 17 Accounting](https://www.cybrosys.com/blog/how-to-configure-vendor-bills-payments-management-in-odoo-17-accounting).
+* **Fecha de consulta:** 2 de noviembre de 2026.
 
 ---
 
 #### 3. Captura 3: Vista de detalle y estados de una factura
 
-- **Estado:** `[CAPTURA PENDIENTE]`
-- **Ruta prevista:** `imagenes/odoo17-detalle-estados-factura.png`
-- **Descripción requerida de la pantalla:** Debe mostrar la vista de consulta o detalle de una factura de proveedor en estado publicado / confirmado (*Posted*) en Odoo 17.0. Se debe apreciar la barra de estado (*Statusbar*) que indica el progreso visual del documento (`Borrador` → `Publicado`), la secuencia interna asignada (`BILL/...`), los botones de acción contextuales (`Restablecer a borrador` / `Nota de crédito`) y el bloqueo de edición directa de los campos contables.
-- **Enlace oficial de referencia:**  
-  [Odoo 17.0 Documentation — Vendor Bills (Validation & Status)](https://www.odoo.com/documentation/17.0/applications/finance/accounting/vendor_bills.html)
-- **Registro de fuente y fecha de consulta:**
-  - *Fuente exacta de la captura:* `[Pendiente de registro tras captura]`
-  - *Fecha de consulta / obtención:* `[Pendiente de registro]`
+![Vista de detalle de factura y acciones de reversión en Odoo 17](imagenes/odoo17-detalle-factura.png)
+
+* **Título:** Vista de detalle de factura de proveedor confirmada (*Posted*) con acciones de reversión en Odoo 17.
+* **Versión:** Odoo 17.0 (Módulo *Purchase / Accounting*).
+* **Funcionalidad observada:** Vista de consulta y detalle de una factura de proveedor con correlativo asignado (`BILL/2023/09/0002`), generada a partir de una orden de compra previa (`Purchase Orders / P00016`). Se aprecian los campos de cabecera en modo solo lectura, el detalle de productos (`Acoustic Bloc Screens`), y en la barra superior de acciones los botones contextuales para la gestión posterior de la obligación: **`Credit Note`** (para iniciar la emisión de una nota de crédito / reversión) y **`Reset to Draft`** (para restablecer a borrador según permisos de usuario y configuración del diario).
+* **Precisión sobre el alcance de la captura:** Esta captura demuestra la ubicación de los controles de reversión y cambio de estado directamente en la ficha del documento en Odoo 17.0. Sin embargo, no despliega la ventana modal emergente del asistente de notas de crédito (*Credit Note wizard*), la cual se describe funcionalmente en el siguiente apartado complementario.
+* **Fuente original:** Cybrosys Technologies / Entorno demostrativo de Odoo 17 (SaaS Demo Instance) — [Cybrosys Odoo 17 Blogs](https://www.cybrosys.com/blog/) / [Odoo 17.0 Documentation — Vendor Bills](https://www.odoo.com/documentation/17.0/applications/finance/accounting/vendor_bills.html).
+* **Fecha de consulta:** 2 de noviembre de 2026.
 
 ---
 
-#### 4. Captura 4: Proceso de cancelación o reversión
+#### 4. Referencia técnica complementaria: Proceso de cancelación y reversión (Nota de Crédito)
 
-- **Estado:** `[CAPTURA PENDIENTE]`
-- **Ruta prevista:** `imagenes/odoo17-cancelacion-reversion.png`
-- **Descripción requerida de la pantalla:** Debe mostrar el cuadro de diálogo modal o asistente de cancelación / reversión en Odoo 17.0 (mediante emisión de Nota de Crédito / *Credit Note* o acción de cancelar). Debe observarse la solicitud obligatoria del motivo de anulación (*Reason*), la fecha de la reversión contable y el botón primario de confirmación que asegura la trazabilidad de la operación.
-- **Enlace oficial de referencia:**  
-  [Odoo 17.0 Documentation — Credit Notes and Reversals](https://www.odoo.com/documentation/17.0/applications/finance/accounting/customer_invoices/credit_notes.html)
-- **Registro de fuente y fecha de consulta:**
-  - *Fuente exacta de la captura:* `[Pendiente de registro tras captura]`
-  - *Fecha de consulta / obtención:* `[Pendiente de registro]`
+* **Descripción del flujo de anulación / reversión:** Al presionar el botón **`Credit Note`** observado en la barra de acciones de la Captura 3, Odoo 17.0 despliega un cuadro de diálogo modal centrado (*Credit Note Wizard / Reversal Modal*).
+* **Campos y controles del asistente:**
+  1. **Motivo de la reversión (*Reason*):** Campo de texto obligatorio donde el operador debe justificar la anulación o abono contable.
+  2. **Fecha de reversión (*Reversal Date*):** Fecha contable en la que se registrará el contra-asiento en el diario.
+  3. **Diario de reversión (*Use Specific Journal*):** Selección del diario contable para la nota de crédito.
+  4. **Botón de confirmación:** Botón primario (*Reverse / Create Credit Note*) que genera el documento compensatorio sin destruir la trazabilidad histórica de la factura original.
+* **Relación con la propuesta de anulación lógica del ERP FSI:** Mientras que en Odoo la reversión se ejecuta mediante la creación de un nuevo comprobante vinculado (Nota de Crédito), en nuestro proyecto proponemos simplificar este flujo a una **anulación lógica directa**: la obligación cambia su estado a `ANULADA` en la misma tabla de base de datos, solicitando obligatoriamente el `motivo_anulacion`, sin crear documentos contables derivados ni permitir reactivación posterior (propuesta sujeta a aprobación del Product Owner).
+* **Enlace oficial de referencia para consulta de la vista modal:**  
+  [Odoo 17.0 Documentation — Customer Invoices and Credit Notes](https://www.odoo.com/documentation/17.0/applications/finance/accounting/customer_invoices/credit_notes.html)
 
 ---
 
@@ -364,7 +359,7 @@ flowchart TD
 2. **Definición limpia de estados:** Proponer para la base de datos únicamente los estados persistidos **`REGISTRADA`** y **`ANULADA`**, tratando **`VENCIDA`** como una condición calculada en tiempo de ejecución, elimina la ambigüedad conceptual previa (`ACTIVA` vs `REGISTRADA`), aligera el modelo relacional y armoniza con los bocetos de Frontend y los modelos de Backend.
 3. **Simplicidad orientada a HU-01:** La delimitación estricta de campos y el desacoplamiento respecto al módulo de Compras previenen la sobreingeniería, permitiendo al equipo concentrarse en la robustez y calidad del primer incremento funcional.
 4. **Respeto a las atribuciones del Product Owner:** Todas las recomendaciones sobre obligatoriedad de campos, restricciones de edición, reglas de anulación, no reactivación y desacoplamiento con Compras quedan explícitamente establecidas como propuestas técnicas sujetas a la aprobación vinculante de Rafael Solsol ([T-02](https://github.com/LeonHatches/fsi-erp-cuentas-por-pagar/issues/3)).
-5. **Entregables visuales pendientes:** Se han estructurado rigurosamente los espacios, rutas locales en `docs/referencias/imagenes/` y especificaciones de las cuatro capturas requeridas de Odoo 17.0, dejando claramente señalado que su incorporación física es el único pendiente de esta tarea una vez atendidas las observaciones conceptuales.
+5. **Incorporación de referencias visuales reales de Odoo 17.0:** Se han integrado al repositorio y al documento las capturas de pantalla reales correspondientes a Odoo 17.0 (`odoo17-listado-facturas.jpg`, `odoo17-formulario.jpg`, `odoo17-detalle-factura.png`) con sus debidas acreditaciones a Cybrosys Technologies y la documentación oficial, detallando rigurosamente qué funcionalidad evidencia cada una sin suposiciones infundadas.
 
 ---
 
@@ -378,5 +373,7 @@ flowchart TD
    https://www.odoo.com/documentation/17.0/applications/finance/accounting/reporting.html
 4. **Odoo S.A.** (2024). *Odoo Accounting User Documentation (v17.0)*. Recuperado de:  
    https://www.odoo.com/documentation/17.0/applications/finance/accounting.html
-5. **Guillen, D., & Mengoa, B.** (2026). *Documento de Arquitectura de Software: Módulo Cuentas por Pagar — ERP Financiero FSI*. Universidad Nacional de San Agustín de Arequipa. [docs/arquitectura/ARQUITECTURA.md](../arquitectura/ARQUITECTURA.md).
-6. **Hatches, J. L. E.** (2026). *Planificación del Primer CRUD: Cuentas por Pagar*. Universidad Nacional de San Agustín de Arequipa. [docs/planificacion/primer-crud.md](../planificacion/primer-crud.md).
+5. **Cybrosys Technologies** (2024). *How to Configure Vendor Bills & Payments Management in Odoo 17 Accounting*. Recuperado de:  
+   https://www.cybrosys.com/blog/how-to-configure-vendor-bills-payments-management-in-odoo-17-accounting
+6. **Guillen, D., & Mengoa, B.** (2026). *Documento de Arquitectura de Software: Módulo Cuentas por Pagar — ERP Financiero FSI*. Universidad Nacional de San Agustín de Arequipa. [docs/arquitectura/ARQUITECTURA.md](../arquitectura/ARQUITECTURA.md).
+7. **Hatches, J. L. E.** (2026). *Planificación del Primer CRUD: Cuentas por Pagar*. Universidad Nacional de San Agustín de Arequipa. [docs/planificacion/primer-crud.md](../planificacion/primer-crud.md).
